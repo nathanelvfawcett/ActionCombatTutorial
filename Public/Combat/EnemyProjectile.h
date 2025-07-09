@@ -6,12 +6,15 @@
 #include "GameFramework/Actor.h"
 #include "EnemyProjectile.generated.h"
 
+
 UCLASS()
 class ACTIONCOMBATTUTORIAL_API AEnemyProjectile : public AActor
 {
 	GENERATED_BODY()
 	UPROPERTY(EditAnywhere)
 	UParticleSystem* HitTemplate;	
+	UPROPERTY(EditAnywhere)
+	float Damage{ 10.f };
 	
 public:	
 	// Sets default values for this actor's properties

@@ -6,6 +6,7 @@
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Components/SphereComponent.h"
 
+
 // Sets default values
 AEnemyProjectile::AEnemyProjectile()
 {
@@ -39,6 +40,8 @@ void AEnemyProjectile::HandleBeginOverlap(AActor* OtherActor)
 	FTimerHandle DeatherTimerHandle{};
 	GetWorldTimerManager().SetTimer(DeatherTimerHandle, this, &AEnemyProjectile::DestroyProjectile, .5f);
 	FindComponentByClass<USphereComponent>()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	FDamageEvent ProjectileAttackEvent{};
+	PawnRef->TakeDamage(Damage, ProjectileAttackEvent, PawnRef->GetController(), this);
 }
 
 void AEnemyProjectile::DestroyProjectile()
