@@ -3,3 +3,14 @@
 
 #include "Animations/BossAnimInstance.h"
 
+
+void UBossAnimInstance::UpdateSpeed() {
+	APawn* pawnRef{ TryGetPawnOwner() };
+	if (!IsValid(pawnRef)) {
+		return;
+	}
+
+	FVector Velcocity{ pawnRef->GetVelocity() };
+	CurrentSpeed = static_cast<float>(Velcocity.Length());
+
+}

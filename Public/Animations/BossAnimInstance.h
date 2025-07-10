@@ -16,6 +16,9 @@ class ACTIONCOMBATTUTORIAL_API UBossAnimInstance : public UAnimInstance
 protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float CurrentSpeed{0.f};
+
+	UFUNCTION(BlueprintCallable)
+	void UpdateSpeed();
 public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	bool bIsCharging{ false };
