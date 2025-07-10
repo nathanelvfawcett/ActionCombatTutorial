@@ -4,21 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "BTT_RangeAttack.generated.h"
+#include "BTT_MeleeAttack.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class ACTIONCOMBATTUTORIAL_API UBTT_RangeAttack : public UBTTaskNode
+class ACTIONCOMBATTUTORIAL_API UBTT_MeleeAttack : public UBTTaskNode
 {
 	GENERATED_BODY()
-	UPROPERTY(EditAnywhere)
-	UAnimMontage* AnimMontage;
-	double Threshold{0.9};
-	UPROPERTY(EditAnywhere)
-	float MeleeRange{1250.f};
-
-public:
+protected:
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
+	virtual void TickTask (UBehaviorTreeComponent& OwnerComp,uint8* NodeMemory,float DeltaSeconds) override;
 };
