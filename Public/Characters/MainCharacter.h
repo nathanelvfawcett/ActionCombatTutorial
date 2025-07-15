@@ -15,6 +15,11 @@ class ACTIONCOMBATTUTORIAL_API AMainCharacter : public ACharacter, public IMainP
 {
 	GENERATED_BODY()
 
+	UPROPERTY(EditAnywhere)
+	UAnimMontage* DeathAnimMontage;
+	UPROPERTY(EditAnywhere)
+	UAnimMontage* HurtAnimMontage;
+
 public:
 	// Sets default values for this character's properties
 	AMainCharacter();
@@ -46,5 +51,11 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual float GetDamage() override;
 	virtual bool HasEnoughStamina(float cost) override;
+	virtual void EndLockonWithActor(AActor* ActorRef) override;
+	virtual bool CanTakeDamage(AActor* Opponent) override;
 
+	UFUNCTION(BlueprintCallable)
+	void HandleDeath();
+	UFUNCTION(BlueprintCallable)
+	void PlayHurtAnim(TSubclassOf<class UCameraShakeBase> CameraShakeTemplate);
 };

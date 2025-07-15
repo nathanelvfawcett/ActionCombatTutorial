@@ -4,6 +4,8 @@
 #include "Combat/TraceComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kismet/KismetMathLibrary.h"
+#include "Kismet/GameplayStatics.h"
+
 
 // Sets default values for this component's properties
 UTraceComponent::UTraceComponent()
@@ -108,6 +110,7 @@ void UTraceComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActor
 			GetOwner()->GetInstigatorController(),
 			GetOwner());
 		TargetsToIgnore.AddUnique(TargetActor);
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), HitParticleTemplate, Hit.ImpactPoint);
 	}
 
 }
